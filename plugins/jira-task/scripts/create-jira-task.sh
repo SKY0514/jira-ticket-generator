@@ -66,8 +66,8 @@ if [[ -z "$SUMMARY" ]]; then
   err "--summary (제목) 이 필요합니다."
   exit 1
 fi
-if [[ -z "$DESCRIPTION_FILE" || ! -f "$DESCRIPTION_FILE" ]]; then
-  err "--description-file 경로가 유효하지 않습니다: '${DESCRIPTION_FILE}'"
+if [[ -z "$DESCRIPTION_FILE" || ! -r "$DESCRIPTION_FILE" ]]; then
+  err "--description-file 경로를 읽을 수 없습니다: '${DESCRIPTION_FILE}'"
   exit 1
 fi
 
