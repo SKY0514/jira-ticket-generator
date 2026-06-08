@@ -99,11 +99,13 @@ h2. 추가 정보
    "${CLAUDE_PLUGIN_ROOT}/scripts/create-jira-ticket.sh" \
      --summary "확정된 제목" \
      --description-file /tmp/jira-bug-desc.md \
+     --issue-type "Bug" \
      --priority "High" \
      --assignee "hong@example.com" \
      --labels "bug,login"
    ```
 
+   - `--issue-type "Bug"`: **항상 포함한다.** `/bug` 으로 만든 티켓은 업무유형이 반드시 `Bug`(버그)여야 한다.
    - `--priority`: 사용자가 안 정했으면 **플래그 자체를 생략**한다(스크립트 기본값 Medium).
    - `--assignee`: 안 정했으면 생략(스크립트가 나에게 할당). 검색 결과가 여러 명이면 스크립트가 후보를 알려주니, 사용자에게 다시 물어 이메일로 재지정한다.
    - `--labels`: 안 정했으면 생략.
