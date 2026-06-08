@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# Jira Cloud에 Task 이슈를 생성한다.
+# Jira Cloud에 이슈를 생성한다.
 #
 # 사용법:
-#   create-jira-task.sh --summary "제목" --description-file <본문파일경로>
+#   create-jira-ticket.sh --summary "제목" --description-file <본문파일경로> [--issue-type Task]
 #
 # 필요한 환경변수:
 #   JIRA_EMAIL        (필수) Atlassian 계정 이메일
@@ -32,6 +32,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --description-file)
       DESCRIPTION_FILE="${2:-}"
+      shift 2
+      ;;
+    --issue-type)
+      ISSUE_TYPE="${2:-}"
       shift 2
       ;;
     *)

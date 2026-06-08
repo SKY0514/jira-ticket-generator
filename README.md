@@ -1,6 +1,10 @@
-# jira-task-plugin
+# jira-ticket-generator
 
-기능/개선 요청을 정해진 포맷으로 정리한 뒤, 확인을 거쳐 **Jira(Cloud)에 `Task` 티켓을 자동 생성**하는 Claude Code 플러그인입니다. 주로 개발자가 기능/개선 요청을 빠르게 티켓화할 때 사용합니다.
+기능/개선 요청과 버그를 정해진 포맷으로 정리한 뒤, 확인을 거쳐 **Jira(Cloud) 티켓을 자동 생성**하는 Claude Code 플러그인입니다. 주로 개발자가 요청/버그를 빠르게 티켓화할 때 사용합니다.
+
+명령어:
+- **`/task`** — 기능/개선 요청 (배경·요청내용·완료조건·참고자료)
+- **`/bug`** — 버그/에러 (현상·재현절차·기대동작·실제동작·참고자료)
 
 ## 팀원용 설치 가이드
 
@@ -31,12 +35,12 @@ echo 'export JIRA_API_TOKEN="복사한 토큰"' >> ~/.zshenv
 **터미널에서 `claude` 실행** 후, 그 안에서:
 
 ```
-/plugin marketplace add SKY0514/jira-task-plugin
-/plugin install jira-task
+/plugin marketplace add SKY0514/jira-ticket-generator
+/plugin install jira-ticket-generator
 ```
 
 > 💡 `/plugin` 명령은 **터미널 Claude Code**에서만 동작합니다 (VS Code 확장에서는 불가).
-> 단, 터미널에서 한 번 설치하면 VS Code 확장에서도 `/jira-task`가 같이 잡힙니다.
+> 단, 터미널에서 한 번 설치하면 VS Code 확장에서도 `/task`·`/bug`가 같이 잡힙니다.
 
 필수 의존성: `curl`, `jq` (없으면 `brew install jq`)
 
@@ -45,14 +49,15 @@ echo 'export JIRA_API_TOKEN="복사한 토큰"' >> ~/.zshenv
 Claude Code(터미널 또는 VS Code)에서:
 
 ```
-/jira-task 로그인 화면에 자동완성 기능 추가해줘
+/task 로그인 화면에 자동완성 기능 추가해줘
+/bug 재접수 유저인데 일반 접수기간 기준으로 마감 처리돼요
 ```
 
-1. Claude가 포맷에 맞춰 **초안(제목 + 본문)** 을 보여줍니다.
+1. Claude가 용도에 맞는 포맷으로 **초안(제목 + 본문)** 을 보여줍니다.
 2. "이대로 생성할까요?" 확인을 거쳐
-3. **승인하면** `EXEB` 프로젝트에 `Task` 티켓이 생성되고 링크를 줍니다. (승인 전에는 생성되지 않습니다.)
+3. **승인하면** `EXEB` 프로젝트에 티켓이 생성되고 링크를 줍니다. (승인 전에는 생성되지 않습니다.)
 
-> 인자 없이 `/jira-task` 만 입력하면, 현재 대화·코드 변경 맥락을 보고 초안을 작성합니다.
+> 인자 없이 `/task` 또는 `/bug` 만 입력하면, 현재 대화·코드 변경 맥락을 보고 초안을 작성합니다.
 
 ## 환경변수
 
@@ -89,9 +94,10 @@ h2. 참고 자료
 ## 구조
 
 ```
-.claude-plugin/marketplace.json     # 마켓플레이스 정의
-plugins/jira-task/
-├── .claude-plugin/plugin.json      # 플러그인 매니페스트
-├── commands/jira-task.md           # /jira-task 워크플로우
-└── scripts/create-jira-task.sh     # Jira REST API 호출
+.claude-plugin/marketplace.json        # 마켓플레이스 정의
+plugins/jira-ticket-generator/
+├── .claude-plugin/plugin.json         # 플러그인 매니페스트
+├── commands/task.md                   # /task 워크플로우 (기능/개선)
+├── commands/bug.md                    # /bug 워크플로우 (버그)
+└── scripts/create-jira-ticket.sh      # Jira REST API 호출
 ```

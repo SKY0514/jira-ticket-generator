@@ -1,14 +1,14 @@
 {
-  "name": "jira-task-marketplace",
+  "name": "jira-ticket-generator-marketplace",
   "owner": {
     "name": "SKY0514",
     "url": "https://github.com/SKY0514"
   },
   "plugins": [
     {
-      "name": "jira-task",
-      "source": "./plugins/jira-task",
-      "description": "기능/개선 요청을 정해진 포맷으로 작성해 Jira(Cloud)에 Task 티켓으로 자동 생성하는 /jira-task 명령어"
+      "name": "jira-ticket-generator",
+      "source": "./plugins/jira-ticket-generator",
+      "description": "기능/개선 요청(/task)과 버그(/bug)를 정해진 포맷으로 Jira(Cloud) 티켓으로 자동 생성"
     }
   ]
 }

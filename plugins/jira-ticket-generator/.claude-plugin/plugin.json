@@ -1,0 +1,13 @@
+{
+  "name": "jira-ticket-generator",
+  "version": "0.2.0",
+  "description": "기능/개선 요청과 버그를 정해진 포맷으로 작성해 Jira(Cloud)에 티켓으로 자동 생성합니다.",
+  "author": {
+    "name": "SKY0514",
+    "url": "https://github.com/SKY0514"
+  },
+  "commands": [
+    "./commands/task.md",
+    "./commands/bug.md"
+  ]
+}

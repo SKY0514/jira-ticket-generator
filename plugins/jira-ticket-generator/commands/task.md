@@ -59,7 +59,7 @@ h2. 참고 자료
 2. 플러그인에 포함된 스크립트를 실행한다 (`${CLAUDE_PLUGIN_ROOT}` 는 플러그인 루트로 치환됨):
 
    ```bash
-   "${CLAUDE_PLUGIN_ROOT}/scripts/create-jira-task.sh" \
+   "${CLAUDE_PLUGIN_ROOT}/scripts/create-jira-ticket.sh" \
      --summary "확정된 제목" \
      --description-file /tmp/jira-task-desc.md
    ```
